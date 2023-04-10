@@ -245,3 +245,18 @@ mode "$mode_redshift" {
 
 
 #Screen shot with maim and xclip
+
+## Save screenshot fullscreen
+bindsym $ctrl+Print exec --no-startup-id maim "/home/$USER/Pictures/Screenshots/$(date +Screenshot%Y%m%d%H%M%S%3N).png"
+## Save screenshot active window
+bindsym $ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date +Screenshot%Y%m%d%H%M%S%3N).png"
+## Save screen shot selected
+bindsym $ctrl+Shift+Print exec --no-startup-id maim --select "/home/$USER/Pictures/$(date +Screenshot%Y%m%d%H%M%S%3N).png"
+
+## Clipboard Screenshots
+## fullscreen
+bindsym Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
+## active window
+bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
+## selected
+bindsym Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png

@@ -1,0 +1,4 @@
+# Screenshot
+maim (Pacman)
+xclip (Pacman)
+xtodo (Pacman)
