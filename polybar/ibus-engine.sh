@@ -9,11 +9,7 @@ IBUS_LAYOUT_VARIANT=`echo $IBUS_RAW | awk -F ':' '{print $3}'`
 # read currently used language(eng, ger, unicode, etc...)
 IBUS_LANG=`echo $IBUS_RAW | awk -F ':' '{print $4}'`
 
-# Change me! use any icons you like
-ENGINE_ICON=QA
-LAYOUT_ICON=QQ
-LANG_ICON=AS
-LOCK_ICON=SD
+# Change me! use any icons you likes
 
 if [ -z "${IBUS_LAYOUT}" ] || [ "${IBUS_LAYOUT}" = "\n" ]
 then
@@ -23,9 +19,9 @@ fi
 OUTPUT="${ENGINE_ICON} ${IBUS_ENGINE}"
 if [ -n "${IBUS_LAYOUT_VARIANT}" ] && [ "${IBUS_LAYOUT_VARIANT}" != "\n" ]
 then
-    OUTPUT="${OUTPUT} ${LAYOUT_ICON} ${IBUS_LAYOUT} - ${IBUS_LAYOUT_VARIANT}"
+    OUTPUT="${OUTPUT} ${LAYOUT_ICON} - ${IBUS_LAYOUT_VARIANT}"
 else
-    OUTPUT="${OUTPUT} ${LAYOUT_ICON} ${IBUS_LAYOUT}"
+    OUTPUT="${OUTPUT} ${LAYOUT_ICON}"
 fi
 
 if [ -n "${IBUS_LANG}" ] && [ "${IBUS_LANG}" != "\n" ]
@@ -37,10 +33,6 @@ fi
 CAPSLOCK=`xset -q | grep "Caps Lock: *on"`
 NUMLOCK=`xset -q | grep "Num Lock: *on"`
 OUTPUT_LOCK=""
-if [ -n "${CAPSLOCK}" ]
-then
-    OUTPUT_LOCK="${LOCK_ICON} Caps"
-fi
 if [ -n "${NUMLOCK}" ]
 then
     if [ -n "${OUTPUT_LOCK}" ]

@@ -13,7 +13,7 @@ Font: TBD
   - [x] Nightlight mode with redshift
   - [x] Screenshot mode with maim and xclip
   - [ ] Screen recording
-  - [ ] Wallpaper on startup
+  - [x] Wallpaper on startup
   - [ ] Lockscreen with login and logging out
   - [ ] Dark mode and light mode config
   - [ ] Network selector shortcut (WIFI, Ethernet)
@@ -31,7 +31,7 @@ Font: TBD
   - [ ] Config custom rofi to open quick application
 - Urxvt (Terminal)
   - [x] Setup URxvt + urxvt unicode
-  - [ ] Styling terminal match with theme
+  - [x] Styling terminal match with theme
   - [ ] Support autosuggestion (ZSH)
 
 ### Applications

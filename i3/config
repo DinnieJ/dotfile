@@ -15,7 +15,7 @@ set $ctrl Control
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 10
+font pango:Purista 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -26,6 +26,8 @@ font pango:monospace 10
 exec --no-startup-id dex --autostart --environment i3
 exec_always --no-startup-id ibus-daemon -d
 exec_always --no-startup-id $HOME/code/dotfile/polybar/polybar_daemon.sh
+exec_always --no-startup-id xrdb ~/.Xresources
+exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpaper.jpg
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
@@ -159,6 +161,9 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
+# move focused workspace between monitors
+bindsym $mod+Ctrl+greater move workspace to output right
+bindsym $mod+Ctrl+less move workspace to output left
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -199,10 +204,10 @@ bindsym $mod+$alt+Delete mode "$shutdown"
 set $shutdown (S)hutdown (R)estart (L)ock (P) Suspend
 
 mode "$shutdown" {
-       bindsym s exec systemctl poweroff
+       bindsym s exec systemctl poweroff, mode "default"
        bindsym r exec systemctl reboot
-       bindsym l exec i3lock lock
-       bindsym p exec i3lock lock && systemctl suspend
+       bindsym l exec i3lock lock, mode "default"
+       bindsym p exec i3lock lock && systemctl suspend, mode "default"
        
        bindsym Return mode "default"
        bindsym Escape mode "default"
@@ -260,3 +265,7 @@ bindsym Print exec --no-startup-id maim | xclip -selection clipboard -t image/pn
 bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
 ## selected
 bindsym Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
+
+
+# floating window application
+for_window [class="URxvt" instance="urxvt"] floating enable
